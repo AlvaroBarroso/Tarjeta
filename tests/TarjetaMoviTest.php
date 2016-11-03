@@ -12,6 +12,7 @@ class TarjetaMoviTest extends TestCase{
 		$this->bici = new Bici(9424);
 		$this->colectivo144Negro = new Colectivo('144 Negro');
 		$this->colectivo128Rojo = new Colectivo('128 Rojo');
+		
 		$this->tarjeta = new TarjetaMovi(11);
 		$this->medio = new MedioBoleto(22);
 		$this->pase = new Pase(33);
