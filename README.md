@@ -1,5 +1,7 @@
-# TarjetaSinContacto
-Trabajo práctico Testing | Adaptación del ambiente de trabajo.
+#  Tarjeta De MOVI 
+  *ALVARO BARROSO*
+      6to Info
+#       IPS
 
 [![Build Status](https://travis-ci.org/AlvaroBarroso/Tarjeta.svg?branch=master)](https://travis-ci.org/AlvaroBarroso/Tarjeta)
 
