@@ -23,7 +23,7 @@ class TarjetaMoviTest extends TestCase{
 		$this->assertEquals($this->pase->saldo(), 0, "Credito");
 		$this->assertEquals($this->pase->recargar(69), "No se le pueden hacer recargas", "Recarga pase");
 
-		$this->assertEquals($this->pase->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "Sin cobro", "No paga, pase")
+		$this->assertEquals($this->pase->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "Sin cobro", "No paga, pase");
 	}
 		//MiBiciTuBici
 
