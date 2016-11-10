@@ -24,6 +24,16 @@ class TarjetaMoviTest extends TestCase{
 		$this->assertEquals($this->bici->returnTipo(), "Bicicleta" , "Tipo Bicicleta");
 	}
 
+	public function testColectivo(){
+		// 128 Rojo
+		$this->assertEquals($this->colectivo128Rojo->numero(), '128 Rojo' , "Número de colectivo");
+		$this->assertEquals($this->colectivo128Rojo->returnTipo(), "Colectivo" , "Tipo Colectivo");
+
+
+		// 144 Negro
+		$this->assertEquals($this->colectivo144Negro->numero(), '144 Negro' , "Número de colectivo");
+		$this->assertEquals($this->colectivo144Negro->returnTipo(), "Colectivo" , "Tipo Colectivo");
+	}
 
 
 } 
