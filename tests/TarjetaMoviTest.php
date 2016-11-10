@@ -44,11 +44,11 @@ class TarjetaMoviTest extends TestCase{
 	}
 
 	public function testTarjetaMovi(){
-		// Valores iniciales
-		$this->assertEquals($this->tarjeta->credito, 0, "Crédito inicial tarjeta");
-		$this->assertEquals($this->tarjeta->boletoColectivo, 8.5, "Valor del boleto con tarjeta");
-		$this->assertEquals($this->tarjeta->trasbordo, 2.64, "Valor del trasbordo con tarjeta");
-		$this->assertEquals($this->tarjeta->boletoBici, 12.5, "Valor de la bici con tarjeta");
+		// check valores iniciales
+		$this->assertEquals($this->tarjeta->credito, 0, "Crédito al iniciar tarjeta");
+		$this->assertEquals($this->tarjeta->boletoColectivo, 8.5, "Valor boleto tarjeta");
+		$this->assertEquals($this->tarjeta->trasbordo, 2.64, "Valor trasbordo tarjeta");
+		$this->assertEquals($this->tarjeta->boletoBici, 12.5, "Valor bici tarjeta");
 
 
 		// Saldo
