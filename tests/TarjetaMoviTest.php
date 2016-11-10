@@ -5,13 +5,12 @@ namespace TarjetaMovi;
 use PHPUnit\Framework\TestCase;
 
 class TarjetaMoviTest extends TestCase{
-	protected $bici, $colectivo144Negro, $colectivo128Rojo, $tarjeta, $medio, $pase;
-
+	protected $bici, $colectivo145Rojo, $colectivo142Negro, $tarjeta, $medio, $pase;
 
 	public function setup(){
 		$this->bici = new Bici(9424);
-		$this->colectivo144Negro = new Colectivo('144 Negro');
-		$this->colectivo128Rojo = new Colectivo('128 Rojo');
+		$this->colectivo145Rojo = new Colectivo('145 Rojo');
+		$this->colectivo142Negro = new Colectivo('142 Negro');
 		
 		$this->tarjeta = new TarjetaMovi(11);
 		$this->medio = new MedioBoleto(22);
@@ -25,14 +24,14 @@ class TarjetaMoviTest extends TestCase{
 	}
 
 	public function testColectivo(){
-		// 128 Rojo
-		$this->assertEquals($this->colectivo128Rojo->numero(), '128 Rojo' , "Número de colectivo");
-		$this->assertEquals($this->colectivo128Rojo->returnTipo(), "Colectivo" , "Tipo Colectivo");
+		// 142 Negro
+		$this->assertEquals($this->colectivo142Negro->numero(), '142 Negro' , "Número de colectivo");
+		$this->assertEquals($this->colectivo142Negro->returnTipo(), "Colectivo" , "Tipo Colectivo");
 
 
-		// 144 Negro
-		$this->assertEquals($this->colectivo144Negro->numero(), '144 Negro' , "Número de colectivo");
-		$this->assertEquals($this->colectivo144Negro->returnTipo(), "Colectivo" , "Tipo Colectivo");
+		// 145 Rojo
+		$this->assertEquals($this->colectivo145Rojo->numero(), '145 Rojo' , "Número de colectivo");
+		$this->assertEquals($this->colectivo145Rojo->returnTipo(), "Colectivo" , "Tipo Colectivo");
 	}
 
 	public function testTarjetaMovi(){
@@ -48,35 +47,35 @@ class TarjetaMoviTest extends TestCase{
 		$this->assertEquals($this->tarjeta->saldo(), 8.5, "Fúnción saldo");
 		
 		// Primer Viaje
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '30-10-2016 19:04'), [11, "Normal", "144 Negro", '30-10-2016 19:04', 0], "Primer viaje");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '30-10-2016 19:04'), [11, "Normal", "145 Rojo", '30-10-2016 19:04', 0], "Primer viaje");
 		$this->assertEquals($this->tarjeta->credito, 0, "Crédito primer viaje");
 		
 		
 
 
 		// PlusHistorial [id, tipo de viaje, numero de transporte, fecha, credito restante]
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '1-11-2016 19:04'), [11, "Plus", "144 Negro", '1-11-2016 19:04', -8.5], "Primer Plus");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '1-11-2016 22:06'),[11, "Plus", "144 Negro", '1-11-2016 22:06', -17.0], "Segundo Plus");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '1-11-2016 23:50'), "No quedan viajes Plus", "Sin Plus disponible");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '1-11-2016 19:04'), [11, "Plus", "145 Rojo", '1-11-2016 19:04', -8.5], "Primer Plus");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '1-11-2016 22:06'),[11, "Plus", "145 Rojo", '1-11-2016 22:06', -17.0], "Segundo Plus");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '1-11-2016 23:50'), "No quedan viajes Plus", "Sin Plus disponible");
 		
 		
 		// Crédito insuficiente
 		$this->assertEquals($this->tarjeta->pagar($this->bici, '24-05-2016 13:04'), "Crédito insuficiente", "Bicicleta sin crédito");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '4-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo128Rojo, '4-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '4-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '5-11-2016 7:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo128Rojo, '5-11-2016 7:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 7:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 7:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '5-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo128Rojo, '5-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '6-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo128Rojo, '6-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '6-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '6-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo144Negro, '5-11-2016 23:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo128Rojo, '5-11-2016 23:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 23:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 23:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
 
 		// Recarga
@@ -96,50 +95,50 @@ class TarjetaMoviTest extends TestCase{
 		$this->tarjeta->pagar($this->bici, '2-11-2016 13:04');
 		$this->assertEquals($this->tarjeta->credito, 847.5, "Alquilar bici con tarjeta");
 
-		$this->tarjeta->pagar($this->colectivo144Negro, '4-11-2016 13:04');
+		$this->tarjeta->pagar($this->colectivo145Rojo, '4-11-2016 13:04');
 		$this->assertEquals($this->tarjeta->credito, 839, "Colectivo 1 con tarjeta");
 		
-		$this->tarjeta->pagar($this->colectivo128Rojo, '4-11-2016 13:44');
+		$this->tarjeta->pagar($this->colectivo142Negro, '4-11-2016 13:44');
 		$this->assertEquals($this->tarjeta->credito, 836.36, "Trasbordo lunes a viernes");
 
 
 		$this->tarjeta->recargar(3.64);
 
-		$this->tarjeta->pagar($this->colectivo144Negro, '5-11-2016 6:04');
+		$this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 6:04');
 		$this->assertEquals($this->tarjeta->credito, 831.5, "Colectivo 2 con tarjeta");
 		$this->tarjeta->recargar(8.5);
-		$this->tarjeta->pagar($this->colectivo128Rojo, '5-11-2016 6:44');
+		$this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 6:44');
 		$this->assertEquals($this->tarjeta->credito, 837.36, "Trasbordo sabado 6 a 14");
 
 		$this->tarjeta->recargar(2.64);
 
-		$this->tarjeta->pagar($this->colectivo144Negro, '5-11-2016 14:04');
+		$this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 14:04');
 		$this->assertEquals($this->tarjeta->credito, 831.5, "Colectivo 2 con tarjeta");
 		$this->tarjeta->recargar(8.5);
-		$this->tarjeta->pagar($this->colectivo128Rojo, '5-11-2016 14:44');
+		$this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 14:44');
 		$this->assertEquals($this->tarjeta->credito, 837.36, "Trasbordo sabado 14 a 22");		
 
 		$this->tarjeta->recargar(2.64);
 
-		$this->tarjeta->pagar($this->colectivo144Negro, '6-11-2016 6:04');
+		$this->tarjeta->pagar($this->colectivo145Rojo, '6-11-2016 6:04');
 		$this->assertEquals($this->tarjeta->credito, 831.5, "Colectivo 2 con tarjeta");
 		$this->tarjeta->recargar(8.5);
-		$this->tarjeta->pagar($this->colectivo128Rojo, '6-11-2016 6:44');
+		$this->tarjeta->pagar($this->colectivo142Negro, '6-11-2016 6:44');
 		$this->assertEquals($this->tarjeta->credito, 837.36, "Trasbordo domingo 6 a 22");
 
 
 		$this->tarjeta->recargar(2.64);
 
-		$this->tarjeta->pagar($this->colectivo144Negro, '6-11-2016 22:04');
+		$this->tarjeta->pagar($this->colectivo145Rojo, '6-11-2016 22:04');
 		$this->assertEquals($this->tarjeta->credito, 831.5, "Colectivo 2 con tarjeta");
 		$this->tarjeta->recargar(8.5);
-		$this->tarjeta->pagar($this->colectivo128Rojo, '6-11-2016 22:44');
+		$this->tarjeta->pagar($this->colectivo142Negro, '6-11-2016 22:44');
 		$this->assertEquals($this->tarjeta->credito, 837.36, "Trasbordo noche 22 a 6");
 
 
 		
 		// Viajes realizados
-		$this->assertEquals($this->tarjeta->viajesRealizados()[1], [11, "Normal", "144 Negro", '30-10-2016 19:04', 0], "Viajes realizados");
+		$this->assertEquals($this->tarjeta->viajesRealizados()[1], [11, "Normal", "145 Rojo", '30-10-2016 19:04', 0], "Viajes realizados");
 
 	}
 
