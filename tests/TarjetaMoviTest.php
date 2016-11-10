@@ -21,7 +21,7 @@ class TarjetaMoviTest extends TestCase{
 		$this->assertEquals($this->pase->saldo(), 0, "Credito");
 		$this->assertEquals($this->pase->recargar(69), "No se le pueden hacer recargas", "Recarga pase");
 
-		$this->assertEquals($this->pase->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "Sin cobro", "No debe descontar");
+			$this->assertEquals($this->pase->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "Sin cobro", "No paga, pase");
 
 
 	}
@@ -39,8 +39,8 @@ class TarjetaMoviTest extends TestCase{
 
 
 		// 145 Rojo
-		$this->assertEquals($this->colectivo145Rojo->numero(), '145 Rojo' , "Número de colectivo");
-		$this->assertEquals($this->colectivo145Rojo->returnTipo(), "Colectivo" , "Tipo Colectivo");
+		$this->assertEquals($this->colectivo145Rojo->numero(), '145 Rojo' , "Número y color de colectivo");
+		$this->assertEquals($this->colectivo145Rojo->returnTipo(), "Colectivo" , "es del tipo Colectivo");
 	}
 
 	public function testTarjetaMovi(){
