@@ -63,7 +63,7 @@ class TarjetaMovi{
 							}
 							// Crédito insuficiente para el trasbordo
 							else{
-								#return $this->plus($transporte, $date);
+								return $this->plus($transporte, $date);
 							}
 						}
 					}
