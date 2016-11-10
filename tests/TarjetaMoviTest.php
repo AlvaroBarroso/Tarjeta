@@ -14,7 +14,17 @@ class TarjetaMoviTest extends TestCase{
 		
 		$this->tarjeta = new TarjetaMovi(11);
 		$this->medio = new MedioBoleto(22);
-		$this->pase = new Pase(33);
+		$this->pase = new Pase(42);
+	}
+
+	public function testPase(){
+		$this->assertEquals($this->pase->saldo, 42, "Credito")
+
+		$this->assertEquals($this->pase->recargar, "No se le pueden hacer recargas", "Recarga pase")
+
+		$this->assertEquals($this->pase->pagar, "Sin cobro", "No debe descontar")
+
+
 	}
 
 	public function testBici(){
