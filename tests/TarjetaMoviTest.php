@@ -71,20 +71,20 @@ class TarjetaMoviTest extends TestCase{
 		// Sin credito 
 		$this->assertEquals($this->tarjeta->pagar($this->bici, '24-05-2016 13:04'), "Crédito insuficiente", "Bicicleta sin crédito");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "No quedan plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '4-11-2016 19:44'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '4-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 7:04'), "No quedan  plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 7:44'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 7:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 7:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 19:04'), "No quedan  plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 19:44'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '6-11-2016 19:04'), "No quedan  plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '6-11-2016 19:44'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '6-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '6-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 23:04'), "No quedan  plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 23:44'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 23:04'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 23:44'), "No quedan viajes Plus", "Pasaje Normal");
 		
 
 		// Realizar  recarga
