@@ -8,7 +8,7 @@ class TarjetaMoviTest extends TestCase{
 	protected $bici, $colectivo145Rojo, $colectivo142Negro, $tarjeta, $medio, $pase;
 
 	public function setup(){
-		$this->bici = new Bici(9424);
+		$this->bici = new Bici(24);
 		$this->colectivo145Rojo = new Colectivo('145 Rojo');
 		$this->colectivo142Negro = new Colectivo('142 Negro');
 		
@@ -25,10 +25,10 @@ class TarjetaMoviTest extends TestCase{
 
 
 	}
-
+		//MiBiceTuBici
 	public function testBici(){
-		// Bici
-		$this->assertEquals($this->bici->numero(), 9424 , "Número de bicicleta");
+		
+		$this->assertEquals($this->bici->numero(), 24 , "Número de bicicleta");
 		$this->assertEquals($this->bici->returnTipo(), "Bicicleta" , "Tipo Bicicleta");
 	}
 
