@@ -51,43 +51,43 @@ class TarjetaMoviTest extends TestCase{
 		$this->assertEquals($this->tarjeta->boletoBici, 12.5, "Valor bici tarjeta");
 
 
-		// Saldo
+		// check saldo
 		$this->tarjeta->recargar(8.5);
 		$this->assertEquals($this->tarjeta->saldo(), 8.5, "Fúnción saldo");
 		
-		// Primer Viaje
+		// check primer viaje
 		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '30-10-2016 19:04'), [11, "Normal", "145 Rojo", '30-10-2016 19:04', 0], "Primer viaje");
 		$this->assertEquals($this->tarjeta->credito, 0, "Crédito primer viaje");
 		
 		
 
 
-		// PlusHistorial [id, tipo de viaje, numero de transporte, fecha, credito restante]
+		// historial viaje plus
 		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '1-11-2016 19:04'), [11, "Plus", "145 Rojo", '1-11-2016 19:04', -8.5], "Primer Plus");
 		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '1-11-2016 22:06'),[11, "Plus", "145 Rojo", '1-11-2016 22:06', -17.0], "Segundo Plus");
 		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '1-11-2016 23:50'), "No quedan viajes Plus", "Sin Plus disponible");
 		
 		
-		// Crédito insuficiente
+		// Sin credito 
 		$this->assertEquals($this->tarjeta->pagar($this->bici, '24-05-2016 13:04'), "Crédito insuficiente", "Bicicleta sin crédito");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '4-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '4-11-2016 19:04'), "No quedan plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '4-11-2016 19:44'), "No quedan  plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 7:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 7:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 7:04'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 7:44'), "No quedan  plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 19:04'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 19:44'), "No quedan  plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '6-11-2016 19:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '6-11-2016 19:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '6-11-2016 19:04'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '6-11-2016 19:44'), "No quedan  plus", "Pasaje Normal");
 		
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 23:04'), "No quedan viajes Plus", "Pasaje Normal");
-		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 23:44'), "No quedan viajes Plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo145Rojo, '5-11-2016 23:04'), "No quedan  plus", "Pasaje Normal");
+		$this->assertEquals($this->tarjeta->pagar($this->colectivo142Negro, '5-11-2016 23:44'), "No quedan  plus", "Pasaje Normal");
 		
 
-		// Recarga
+		// Realizar  recarga
 		$this->tarjeta->recargar(17);
 		$this->assertEquals($this->tarjeta->saldo(), 0, "Función saldo");
 		
